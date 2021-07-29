@@ -1,0 +1,25 @@
+{
+  "name": "iporesultserver",
+  "version": "1.0.0",
+  "description": "server for querying ipo results of company listed in NEPSE",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "jiwan sapkota",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^17.4.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.6",
+    "sequelize": "^5.22.4",
+    "sequelize-auto": "^0.8.3"
+  }
+}
