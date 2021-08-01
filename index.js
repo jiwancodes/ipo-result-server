@@ -10,8 +10,10 @@ const routes = require('./routes/route');
 const morgan = require('morgan');
 const db = require('./models');
 
-
 const app = express()
+app.disable('etag')
+    .disable('x-powered-by');
+
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
@@ -31,3 +33,4 @@ app.get('/check', (req, res) => {
     });
 });
 app.use(routes);
+app.use((req, res) => res.status(404).send({ message: 'Request Not Found' }));

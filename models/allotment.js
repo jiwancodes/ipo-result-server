@@ -1,3 +1,8 @@
+/**
+ * @Created 28/07/2021 - 22:56 PM
+ * @Project ipo-result-backend
+ * @Author Jiwan Sapkota - sapkotazeewan13@gmail.com
+ */
 module.exports = function(sequelize, DataTypes) {
     const Allotment= sequelize.define('Allotment', {
       id: {

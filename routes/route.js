@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.post('/result',async(req,res)=>{
     const{ boid, company}= req.body;
-    console.log('body is :',req.body);
+    // console.log('body is :',req.body);
     const { error } = boidAndCompanyValidation()
     .validate({
         boid,
@@ -24,7 +24,7 @@ router.post('/result',async(req,res)=>{
         })
     }
     const [data, err] = await getResult(boid,company);
-    console.log(data);
+    // console.log(data);
     if (data) {
         res.status(200).json({
             'code':200,
