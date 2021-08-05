@@ -27,10 +27,10 @@ db.sequelize.sync().then(() => {
     app.listen(PORT, console.log(`server running in port ${PORT} in ${process.env.NODE_ENV} mode`))
 });
 app.get('/check', (req, res) => {
-    res.send({
-        message: 'OK',
-        code: 201,
+    res.status(200).send({
+        msg: 'OK',
+        code: 200,
     });
 });
 app.use(routes);
-app.use((req, res) => res.status(404).send({ message: 'Request Not Found' }));
+app.use((req, res) => res.status(404).send({ msg: 'Request Not Found' }));

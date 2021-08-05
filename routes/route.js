@@ -25,21 +25,27 @@ router.post('/result',async(req,res)=>{
     }
     const [data, err] = await getResult(boid,company);
     // console.log(data);
+    if(err){
+        res.status(500).json({
+            'code':500,
+            'data': null,
+            'msg':`Internal Server Error.`
+        })
+    }
     if (data) {
         res.status(200).json({
             'code':200,
             'data': data,
-            'msg':`Congratulations!!, you are allotted with ${data.qty} shares`
+            'msg':`Congratulations. You have been allotted ${data.qty} shares!`
         });
 
-    } else {
+    } if(data==null) {
         res.status(201).json({
             'code':201,
             'data': data,
-            'msg':`sorry!, not allotted `
+            'msg':`Sorry, you were not allotted any shares this time.`
         })
     }
-
-
+   
 });
 module.exports = router;

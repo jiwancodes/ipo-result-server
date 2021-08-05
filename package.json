@@ -1,9 +1,13 @@
 {
   "name": "iporesultserver",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.19.0",
+    "npm": "6.14.4"
+  },
   "description": "server for querying ipo results of company listed in NEPSE",
   "main": "index.js",
-  "scripts": {    
+  "scripts": {
     "test": "test",
     "start": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=development nodemon index.js"

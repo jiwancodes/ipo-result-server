@@ -19,6 +19,7 @@ module.exports = {
                 },
                 attributes: ['boid', 'qty']
             });
+            console.log("data is",data);
             return [data, null];
         } catch (err) {
             console.log(err);
