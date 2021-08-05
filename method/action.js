@@ -10,8 +10,6 @@ const db = require('../models');
 module.exports = {
     getResult: async (boid, company) => {
         try {
-            // console.log('boid', boid);
-            // console.log('company', company);
             const data = await db.Allotment.findOne({
                 where: {
                     company,
@@ -19,7 +17,6 @@ module.exports = {
                 },
                 attributes: ['boid', 'qty']
             });
-            console.log("data is",data);
             return [data, null];
         } catch (err) {
             console.log(err);
