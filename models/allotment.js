@@ -4,7 +4,7 @@
  * @Author Jiwan Sapkota - sapkotazeewan13@gmail.com
  */
 module.exports = function(sequelize, DataTypes) {
-    const Allotment= sequelize.define('Allotment', {
+    const allotment= sequelize.define('allotment', {
       id: {
         autoIncrement: true,
         type: DataTypes.INTEGER.UNSIGNED,
@@ -26,5 +26,5 @@ module.exports = function(sequelize, DataTypes) {
     },{ 
       timestamps: false,
     });
-    return Allotment;
+    return allotment;
   };

@@ -10,9 +10,8 @@ const {
 } = require('../method/action');
 const { boidAndCompanyValidation } = require('./requestValidation')
 const {
-    setDataInRedis,
     getDataFromRedis,
-    clearData,
+    // clearData,
 } = require('../Utils/RedisResponse');
 const router = express.Router();
 
@@ -110,5 +109,5 @@ router.get('/companies', async (req, res) => {
         });
     }
 });
-router.get('/clearCache', clearData);
+// router.get('/clearCache', clearData);
 module.exports = router;
