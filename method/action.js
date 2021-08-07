@@ -11,7 +11,7 @@ const { setDataInRedis } = require('../Utils/RedisResponse')
 module.exports = {
     getResult: async (boid, company) => {
         try {
-            const data = await db.Allotment.findOne({
+            const data = await db.allotment.findOne({
                 where: {
                     company,
                     boid
@@ -26,7 +26,7 @@ module.exports = {
     },
     getCompanies: async () => {
         try {
-            const data = await db.Allotment.aggregate('company', 'DISTINCT', { plain: false })
+            const data = await db.allotment.aggregate('company', 'DISTINCT', { plain: false })
             const newData = [];
             data.forEach((element) => {
                 newData.push(element.DISTINCT);
@@ -39,7 +39,7 @@ module.exports = {
     },
     cacheAllData: async () => {
         try {
-            const data = await db.Allotment.findAll({
+            const data = await db.allotment.findAll({
                 attributes: ['company', 'boid', 'qty']
             });
            await data.forEach((element) => {
