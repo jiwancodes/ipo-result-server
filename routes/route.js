@@ -11,13 +11,12 @@ const {
 const { boidAndCompanyValidation } = require('./requestValidation')
 const {
     getDataFromRedis,
-    // clearData,
+    clearData,
 } = require('../Utils/RedisResponse');
 const router = express.Router();
 
-router.post('/resultfromdatabase',async(req,res)=>{
-    const{ boid, company}= req.body;
-    // console.log('body is :',req.body);
+router.get('/resultfromdatabase',async(req,res)=>{
+    const{ boid, company}= req.query;
     const { error } = boidAndCompanyValidation()
     .validate({
         boid,
@@ -100,14 +99,20 @@ router.get('/companies', async (req, res) => {
             'data': null,
             'msg': `Internal Server Error.`
         })
+    }if(data==null){
+        return res.status(201).json({
+            'code': 200,
+            'data': data,
+            'msg': 'Result not available yet'
+        });
     }
     if (data) {
         return res.status(200).json({
             'code': 200,
             'data': data,
-            'msg': `companies`
+            'msg': ''
         });
     }
 });
-// router.get('/clearCache', clearData);
+router.get('/clearCache', clearData);
 module.exports = router;

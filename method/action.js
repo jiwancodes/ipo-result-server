@@ -9,6 +9,15 @@ const {
 const db = require('../models');
 const { setDataInRedis } = require('../Utils/RedisResponse')
 module.exports = {
+    checkData:async () => {
+        try {
+            const data = await db.allotment.findOne();
+            return [data, null];
+        } catch (err) {
+            console.log(err);
+            return [null, err];
+        }
+    },
     getResult: async (boid, company) => {
         try {
             const data = await db.allotment.findOne({
@@ -42,8 +51,8 @@ module.exports = {
             const data = await db.allotment.findAll({
                 attributes: ['company', 'boid', 'qty']
             });
+            console.log('caching all data');
            await data.forEach((element) => {
-                // console.log('caching all data');
                 setDataInRedis(element);
             });
             console.log("caching completed successfully");
