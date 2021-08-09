@@ -11,7 +11,7 @@ const {
 const { boidAndCompanyValidation } = require('./requestValidation')
 const {
     getDataFromRedis,
-    clearData,
+    // clearData,
 } = require('../Utils/RedisResponse');
 const router = express.Router();
 
@@ -54,23 +54,23 @@ router.get('/resultfromdatabase',async(req,res)=>{
     }
 
 });
-router.post('/result', async (req, res) => {
-    const { boid, company } = req.body;
-    const { error } = boidAndCompanyValidation()
-        .validate({
-            boid,
-            company,
-        });
-    if (error) {
-        return res.status(404).json({
-            'code': 404,
-            'err': error,
-            'msg': 'invalid fields'
-        })
-    }
-    const cacheKey = `${company}${boid}`;
-    getDataFromRedis(cacheKey, res);
-});
+// router.post('/result', async (req, res) => {
+//     const { boid, company } = req.body;
+//     const { error } = boidAndCompanyValidation()
+//         .validate({
+//             boid,
+//             company,
+//         });
+//     if (error) {
+//         return res.status(404).json({
+//             'code': 404,
+//             'err': error,
+//             'msg': 'invalid fields'
+//         })
+//     }
+//     const cacheKey = `${company}${boid}`;
+//     getDataFromRedis(cacheKey, res);
+// });
 router.get('/result', async (req, res) => {
     const { boid, company } = req.query;
     const { error } = boidAndCompanyValidation()
@@ -102,7 +102,7 @@ router.get('/companies', async (req, res) => {
     }if(data==null){
         return res.status(201).json({
             'code': 200,
-            'data': data,
+            'data': null,
             'msg': 'Result not available yet'
         });
     }
@@ -114,5 +114,5 @@ router.get('/companies', async (req, res) => {
         });
     }
 });
-router.get('/clearCache', clearData);
+// router.get('/clearCache', clearData);
 module.exports = router;
